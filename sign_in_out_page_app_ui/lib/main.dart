@@ -36,7 +36,6 @@ class WelcomePage extends StatelessWidget {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
-            // fit: StackFit.expand,
             children: [
               _Header(),
               Padding(
@@ -78,32 +77,6 @@ class _HeaderCurveClipper extends CustomClipper<Path> {
   }
 }
 
-class _HeaderCirclePainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = Colors.white.withOpacity(0.4)
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 6;
-
-    canvas.drawCircle(
-      Offset(size.width * 0.25, size.height * 0.4),
-      12,
-      paint,
-    );
-    canvas.drawCircle(
-      Offset(size.width * 0.75, size.height * 0.2),
-      12,
-      paint,
-    );
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-    return false;
-  }
-}
-
 class _HeaderBackground extends StatelessWidget {
   final double height;
 
@@ -132,6 +105,32 @@ class _HeaderBackground extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class _HeaderCirclePainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = Colors.white.withOpacity(0.4)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 6;
+
+    canvas.drawCircle(
+      Offset(size.width * 0.25, size.height * 0.4),
+      12,
+      paint,
+    );
+    canvas.drawCircle(
+      Offset(size.width * 0.75, size.height * 0.2),
+      12,
+      paint,
+    );
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return false;
   }
 }
 
