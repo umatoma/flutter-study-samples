@@ -130,15 +130,15 @@ class _Post extends StatelessWidget {
   final String textNegative;
 
   const _Post({
-    Key key,
-    @required this.name,
-    @required this.message,
-    @required this.textReason,
-    @required this.colorPrimary,
-    @required this.colorPositive,
-    @required this.textPositive,
-    @required this.colorNegative,
-    @required this.textNegative,
+    Key? key,
+    required this.name,
+    required this.message,
+    required this.textReason,
+    required this.colorPrimary,
+    required this.colorPositive,
+    required this.textPositive,
+    required this.colorNegative,
+    required this.textNegative,
   }) : super(key: key);
 
   @override
@@ -206,17 +206,21 @@ class _Post extends StatelessWidget {
                   ),
                   SizedBox(width: 24),
                   Expanded(
-                    child: FlatButton(
-                      textColor: colorNegative,
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        primary: colorNegative,
+                      ),
                       onPressed: () {},
                       child: Text(textNegative),
                     ),
                   ),
                   SizedBox(width: 8),
                   Expanded(
-                    child: FlatButton(
-                      color: colorPositive.withOpacity(0.2),
-                      textColor: colorPositive,
+                    child: TextButton(
+                      style: TextButton.styleFrom(
+                        primary: colorPositive,
+                        backgroundColor: colorPositive.withOpacity(0.2),
+                      ),
                       onPressed: () {},
                       child: Text(textPositive),
                     ),
