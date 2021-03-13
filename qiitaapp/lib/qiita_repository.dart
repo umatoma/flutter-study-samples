@@ -28,7 +28,7 @@ class QiitaRepository {
     }
 
     final response = await http.post(
-      'https://qiita.com/api/v2/access_tokens',
+      Uri.parse('https://qiita.com/api/v2/access_tokens'),
       headers: {
         'content-type': 'application/json',
       },
@@ -47,7 +47,7 @@ class QiitaRepository {
   Future<void> revokeSavedAccessToken() async {
     final accessToken = await getAccessToken();
     final response = await http.delete(
-      'https://qiita.com/api/v2/access_tokens/$accessToken',
+      Uri.parse('https://qiita.com/api/v2/access_tokens/$accessToken'),
       headers: {
         'Authorization': 'Bearer $accessToken',
       },
@@ -86,7 +86,7 @@ class QiitaRepository {
     }
 
     final response = await http.get(
-      url,
+      Uri.parse(url),
       headers: {
         'Authorization': 'Bearer $accessToken',
       },
@@ -117,7 +117,7 @@ class QiitaRepository {
   Future<User> getAuthenticatedUser() async {
     final accessToken = await getAccessToken();
     final response = await http.get(
-      'https://qiita.com/api/v2/authenticated_user',
+      Uri.parse('https://qiita.com/api/v2/authenticated_user'),
       headers: {
         'Authorization': 'Bearer $accessToken',
       },
