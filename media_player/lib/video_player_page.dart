@@ -7,7 +7,7 @@ class VideoPlayerPage extends StatefulWidget {
 }
 
 class _VideoPlayerPageState extends State<VideoPlayerPage> {
-  VideoPlayerController _controller;
+  late VideoPlayerController _controller;
 
   @override
   void initState() {
@@ -74,14 +74,17 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
 class _ProgressText extends StatefulWidget {
   final VideoPlayerController controller;
 
-  const _ProgressText({Key key, this.controller}) : super(key: key);
+  const _ProgressText({
+    Key? key,
+    required this.controller,
+  }) : super(key: key);
 
   @override
   __ProgressTextState createState() => __ProgressTextState();
 }
 
 class __ProgressTextState extends State<_ProgressText> {
-  VoidCallback _listener;
+  late VoidCallback _listener;
 
   __ProgressTextState() {
     _listener = () {

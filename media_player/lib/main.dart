@@ -29,7 +29,7 @@ class TopPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            RaisedButton(
+            ElevatedButton(
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(builder: (_) => VideoPlayerPage()),
@@ -37,7 +37,8 @@ class TopPage extends StatelessWidget {
               },
               child: Text('Video Player'),
             ),
-            RaisedButton(
+            const SizedBox(height: 16),
+            ElevatedButton(
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(builder: (_) => AudioPlayerPage()),
