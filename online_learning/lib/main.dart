@@ -31,8 +31,8 @@ class _Header extends StatelessWidget {
   final String title;
 
   const _Header({
-    Key key,
-    @required this.title,
+    Key? key,
+    required this.title,
   }) : super(key: key);
 
   @override
@@ -69,16 +69,18 @@ class _Hero extends StatelessWidget {
               child: Text('Choose from over 100,000 online video courses'),
             ),
             SizedBox(height: 16),
-            FlatButton(
+            TextButton(
               onPressed: () {},
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              color: Colors.blue,
-              textColor: Colors.white,
-              padding: EdgeInsets.symmetric(
-                vertical: 20,
-                horizontal: 32,
+              style: TextButton.styleFrom(
+                primary: Colors.white,
+                backgroundColor: Colors.blue,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                padding: EdgeInsets.symmetric(
+                  vertical: 20,
+                  horizontal: 32,
+                ),
               ),
               child: Text('Browse all courses'),
             ),
@@ -93,8 +95,8 @@ class _FigmaLogo extends StatelessWidget {
   final double size;
 
   const _FigmaLogo({
-    Key key,
-    @required this.size,
+    Key? key,
+    required this.size,
   }) : super(key: key);
 
   @override
@@ -225,14 +227,16 @@ class _TrendingCourses extends StatelessWidget {
                   SizedBox(height: 16),
                   Container(
                     width: double.infinity,
-                    child: FlatButton(
+                    child: TextButton(
                       onPressed: () {},
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
+                      style: TextButton.styleFrom(
+                        primary: Colors.white,
+                        backgroundColor: Colors.blue,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        padding: EdgeInsets.symmetric(vertical: 20),
                       ),
-                      color: Colors.blue,
-                      textColor: Colors.white,
-                      padding: EdgeInsets.symmetric(vertical: 20),
                       child: Text('View trending list'),
                     ),
                   ),
@@ -252,11 +256,11 @@ class TopPage extends StatefulWidget {
 }
 
 class _TopPageState extends State<TopPage> with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  Animation<Offset> _animation1;
-  Animation<Offset> _animation2;
-  Animation<Offset> _animation3;
-  Animation<Offset> _animation4;
+  late AnimationController _controller;
+  late Animation<Offset> _animation1;
+  late Animation<Offset> _animation2;
+  late Animation<Offset> _animation3;
+  late Animation<Offset> _animation4;
 
   @override
   void initState() {
@@ -348,10 +352,10 @@ class _CourseCard extends StatelessWidget {
   final String logoUrl;
 
   const _CourseCard({
-    Key key,
-    @required this.title,
-    @required this.subtitle,
-    @required this.logoUrl,
+    Key? key,
+    required this.title,
+    required this.subtitle,
+    required this.logoUrl,
   }) : super(key: key);
 
   @override
@@ -440,9 +444,9 @@ class CoursesPage extends StatefulWidget {
 
 class _CoursesPageState extends State<CoursesPage>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  Animation<Offset> _animationHorizontal;
-  Animation<Offset> _animationVertical;
+  late AnimationController _controller;
+  late Animation<Offset> _animationHorizontal;
+  late Animation<Offset> _animationVertical;
 
   @override
   void initState() {
