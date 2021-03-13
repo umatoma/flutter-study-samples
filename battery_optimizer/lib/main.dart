@@ -64,19 +64,19 @@ class _OptimizerButton extends StatelessWidget {
   final String text;
 
   const _OptimizerButton({
-    Key key,
-    @required this.text,
+    Key? key,
+    required this.text,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
-      color: Colors.white,
-      elevation: kElevation,
-      height: 24,
-      padding: EdgeInsets.symmetric(horizontal: 16),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: Colors.white,
+        padding: EdgeInsets.symmetric(horizontal: 16),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
       ),
       onPressed: () {},
       child: Text(
@@ -90,10 +90,10 @@ class _OptimizerButton extends StatelessWidget {
 class OptimizerButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 8),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8),
         child: Row(
           children: [
             SizedBox(width: 16),
@@ -119,8 +119,8 @@ class _BatteryLevelIndicatorPainter extends CustomPainter {
   final double textCircleRadius; // 内側に表示される白丸の半径
 
   _BatteryLevelIndicatorPainter({
-    @required this.percentage,
-    @required this.textCircleRadius,
+    required this.percentage,
+    required this.textCircleRadius,
   });
 
   @override
@@ -131,7 +131,7 @@ class _BatteryLevelIndicatorPainter extends CustomPainter {
       final color = ColorTween(
         begin: kColorIndicatorBegin,
         end: kColorIndicatorEnd,
-      ).lerp(per);
+      ).lerp(per)!;
       final paint = Paint()
         ..color = color
         ..style = PaintingStyle.stroke
@@ -216,10 +216,10 @@ class _AppColumn extends StatelessWidget {
   final String percentage;
 
   const _AppColumn({
-    Key key,
-    @required this.name,
-    @required this.icon,
-    @required this.percentage,
+    Key? key,
+    required this.name,
+    required this.icon,
+    required this.percentage,
   }) : super(key: key);
 
   @override
@@ -309,11 +309,13 @@ class OptimizeNow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 24),
-      child: RaisedButton(
-        color: kColorPurple,
-        padding: EdgeInsets.symmetric(horizontal: 48),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24),
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: kColorPurple,
+          padding: EdgeInsets.symmetric(horizontal: 48),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(24),
+          ),
         ),
         onPressed: () {},
         child: Text('Optimize Now', style: TextStyle(color: Colors.white)),
