@@ -59,9 +59,9 @@ class _AirportName extends StatelessWidget {
   final String fullName;
 
   const _AirportName({
-    Key key,
-    @required this.shortName,
-    @required this.fullName,
+    Key? key,
+    required this.shortName,
+    required this.fullName,
   }) : super(key: key);
 
   @override
@@ -160,29 +160,29 @@ class FlightInfo extends StatelessWidget {
 }
 
 class _TicketShapeBorder extends ShapeBorder {
-  final double width;
-  final double radius;
+  final double? width;
+  final double? radius;
 
   _TicketShapeBorder({
-    @required this.width,
-    @required this.radius,
+    required this.width,
+    required this.radius,
   });
 
   @override
   EdgeInsetsGeometry get dimensions {
-    return EdgeInsets.all(width);
+    return EdgeInsets.all(width!);
   }
 
   @override
   ShapeBorder scale(double t) {
     return _TicketShapeBorder(
-      width: width * t,
-      radius: radius * t,
+      width: width! * t,
+      radius: radius! * t,
     );
   }
 
   @override
-  ShapeBorder lerpFrom(ShapeBorder a, double t) {
+  ShapeBorder? lerpFrom(ShapeBorder? a, double t) {
     if (a is _TicketShapeBorder)
       return _TicketShapeBorder(
         width: lerpDouble(a.width, width, t),
@@ -192,7 +192,7 @@ class _TicketShapeBorder extends ShapeBorder {
   }
 
   @override
-  ShapeBorder lerpTo(ShapeBorder b, double t) {
+  ShapeBorder? lerpTo(ShapeBorder? b, double t) {
     if (b is _TicketShapeBorder)
       return _TicketShapeBorder(
         width: lerpDouble(width, b.width, t),
@@ -202,17 +202,17 @@ class _TicketShapeBorder extends ShapeBorder {
   }
 
   @override
-  Path getInnerPath(Rect rect, {TextDirection textDirection}) {
+  Path getInnerPath(Rect rect, {TextDirection? textDirection}) {
     return getOuterPath(
-      rect.deflate(width),
+      rect.deflate(width!),
       textDirection: textDirection,
     );
   }
 
   @override
-  Path getOuterPath(Rect rect, {TextDirection textDirection}) {
-    final r = radius;
-    final rs = radius / 2; // 区切り部分の半径
+  Path getOuterPath(Rect rect, {TextDirection? textDirection}) {
+    final r = radius!;
+    final rs = radius! / 2; // 区切り部分の半径
     final w = rect.size.width; // 全体の横幅
     final h = rect.size.height; // 全体の縦幅
     final wl = w / 3; // ロゴ部分の横幅
@@ -245,14 +245,14 @@ class _TicketShapeBorder extends ShapeBorder {
   }
 
   @override
-  void paint(Canvas canvas, Rect rect, {TextDirection textDirection}) {
+  void paint(Canvas canvas, Rect rect, {TextDirection? textDirection}) {
     final paint = Paint()
       ..style = PaintingStyle.stroke
-      ..strokeWidth = width
+      ..strokeWidth = width!
       ..color = kColorTicketBorder;
     canvas.drawPath(
       getOuterPath(
-        rect.deflate(width / 2.0),
+        rect.deflate(width! / 2.0),
         textDirection: textDirection,
       ),
       paint,
@@ -264,8 +264,8 @@ class _Ticket extends StatelessWidget {
   final Widget image;
 
   const _Ticket({
-    Key key,
-    @required this.image,
+    Key? key,
+    required this.image,
   }) : super(key: key);
 
   @override
