@@ -81,8 +81,8 @@ class _HeaderBackground extends StatelessWidget {
   final double height;
 
   const _HeaderBackground({
-    Key key,
-    @required this.height,
+    Key? key,
+    required this.height,
   }) : super(key: key);
 
   @override
@@ -138,8 +138,8 @@ class _HeaderCircles extends StatelessWidget {
   final double height;
 
   const _HeaderCircles({
-    Key key,
-    @required this.height,
+    Key? key,
+    required this.height,
   }) : super(key: key);
 
   @override
@@ -162,7 +162,7 @@ class _HeaderTitle extends StatelessWidget {
       children: [
         Text(
           'Welcome',
-          style: Theme.of(context).textTheme.headline4.copyWith(
+          style: Theme.of(context).textTheme.headline4!.copyWith(
                 color: kTextColorPrimary,
                 fontWeight: FontWeight.w500,
               ),
@@ -172,7 +172,7 @@ class _HeaderTitle extends StatelessWidget {
           'Sign in to continue',
           style: Theme.of(context)
               .textTheme
-              .subtitle2
+              .subtitle2!
               .copyWith(color: kTextColorPrimary),
         ),
       ],
@@ -183,10 +183,13 @@ class _HeaderTitle extends StatelessWidget {
 class _HeaderBackButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
-      color: Colors.transparent,
-      shape: CircleBorder(
-        side: BorderSide(color: Colors.white),
+    return TextButton(
+      style: TextButton.styleFrom(
+        primary: kButtonTextColorPrimary,
+        backgroundColor: Colors.transparent,
+        shape: CircleBorder(
+          side: BorderSide(color: kButtonColorPrimary),
+        ),
       ),
       onPressed: () {},
       child: Icon(Icons.chevron_left, color: kIconColor),
@@ -236,10 +239,10 @@ class _CustomTextField extends StatelessWidget {
   final bool obscureText;
 
   const _CustomTextField({
-    Key key,
-    @required this.labelText,
-    @required this.hintText,
-    @required this.obscureText,
+    Key? key,
+    required this.labelText,
+    required this.hintText,
+    required this.obscureText,
   }) : super(key: key);
 
   @override
@@ -290,25 +293,27 @@ class _SignInForm extends StatelessWidget {
           'Forgot Password?',
           style: Theme.of(context)
               .textTheme
-              .bodyText2
+              .bodyText2!
               .copyWith(color: kTextColorSecondary),
         ),
         SizedBox(height: 48),
         Container(
           width: double.infinity,
-          child: FlatButton(
-            color: kButtonColorPrimary,
-            splashColor: kButtonTextColorPrimary,
-            padding: EdgeInsets.symmetric(vertical: 16),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
+          child: TextButton(
+            style: TextButton.styleFrom(
+              primary: kButtonTextColorPrimary,
+              backgroundColor: kButtonColorPrimary,
+              padding: EdgeInsets.symmetric(vertical: 16),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
             ),
             onPressed: () {},
             child: Text(
               'Sign in',
               style: Theme.of(context)
                   .textTheme
-                  .button
+                  .button!
                   .copyWith(color: kButtonTextColorPrimary, fontSize: 18),
             ),
           ),
@@ -318,7 +323,7 @@ class _SignInForm extends StatelessWidget {
           'OR',
           style: Theme.of(context)
               .textTheme
-              .bodyText2
+              .bodyText2!
               .copyWith(color: kTextColorSecondary),
         ),
         SizedBox(height: 16),
@@ -326,7 +331,7 @@ class _SignInForm extends StatelessWidget {
           'Connect with',
           style: Theme.of(context)
               .textTheme
-              .bodyText2
+              .bodyText2!
               .copyWith(color: kTextColorPrimary),
         ),
         SizedBox(height: 24),
@@ -365,7 +370,7 @@ class _Footer extends StatelessWidget {
           'Don\'t have Account?',
           style: Theme.of(context)
               .textTheme
-              .bodyText2
+              .bodyText2!
               .copyWith(color: kTextColorSecondary),
         ),
         SizedBox(width: 4),
@@ -373,7 +378,7 @@ class _Footer extends StatelessWidget {
           'Sign up',
           style: Theme.of(context)
               .textTheme
-              .bodyText2
+              .bodyText2!
               .copyWith(color: kTextColorPrimary),
         ),
       ],
